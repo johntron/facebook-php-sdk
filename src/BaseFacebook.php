@@ -1101,8 +1101,6 @@ abstract class BaseFacebook
   }
 
   /**
-
-  /**
    * Returns the Current URL, stripping it of known FB parameters that should
    * not persist.
    *
@@ -1311,6 +1309,31 @@ abstract class BaseFacebook
       return true;
     }
     return substr($big, -$len) === $small;
+  }
+
+  /**
+   * Sends a batched request to the graph api
+   * @return retval - The response body
+   */
+  public function batch($data) {
+    $endpoint = self::$DOMAIN_MAP['graph'];
+
+    $payload = json_encode($data);
+
+    $post_data = array(
+      'access_token' => $this->getAccessToken(),
+      'batch' => $payload
+    );
+
+    $responses = json_decode($this->makeRequest($endpoint,$post_data),true);
+
+    $retval = array();
+
+    foreach($responses as $response) {
+      $retval[] = json_decode($response['body'],true);
+    }
+
+    return $retval;
   }
 
   /**
