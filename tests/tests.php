@@ -15,6 +15,10 @@
  * under the License.
  */
 
+use Facebook\Facebook;
+use Facebook\BaseFacebook;
+use Facebook\FacebookApiException;
+
 class PHPSDKTestCase extends PHPUnit_Framework_TestCase {
   const APP_ID = '117743971608120';
   const SECRET = '9c8ea2071859659bea1246d33a9207cf';
@@ -1414,7 +1418,7 @@ class PHPSDKTestCase extends PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @expectedException FacebookAPIException
+   * @expectedException Facebook\FacebookAPIException
    */
   public function testErrorCodeFromRestAPIThrowsException() {
     $methods_to_stub = array(
