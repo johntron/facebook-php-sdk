@@ -1,4 +1,6 @@
-Facebook PHP SDK (v.3.2.2)
+A fork of the original Facebook PHP SDK that's PSR-0 compliant and features a batch requests method.
+
+Current as of Facebook PHP SDK (v.3.2.2)
 
 The [Facebook Platform](http://developers.facebook.com/) is
 a set of APIs that make your app more social.
@@ -15,7 +17,7 @@ Usage
 The [examples][examples] are a good place to start. The minimal you'll need to
 have is:
 
-    require 'facebook-php-sdk/src/facebook.php';
+    require 'facebook-php-sdk/src/Facebook.php';
 
     $facebook = new Facebook(array(
       'appId'  => 'YOUR_APP_ID',
